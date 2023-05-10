@@ -20,7 +20,7 @@ export default function Itens(props: Props) {
 
     function testaFiltro(id: number) {
         if(filtro !== null) return filtro === id;
-        return true
+        return true;
     }
 
     function ordenarPropriedadeCrescente(lista: typeof cardapio, propriedade: 'size' | 'serving' | 'price' ) {
@@ -29,14 +29,14 @@ export default function Itens(props: Props) {
 
     function ordenar(novaLista: typeof cardapio) {
         switch(ordenador) {
-            case 'porcao':
-                return ordenarPropriedadeCrescente(novaLista,'size');
-            case 'qtd_pessoas':
-                return ordenarPropriedadeCrescente(novaLista,'serving');
-            case 'preco':
-                return ordenarPropriedadeCrescente(novaLista,'price');
-            default:
-                return novaLista;
+        case 'porcao':
+            return ordenarPropriedadeCrescente(novaLista,'size');
+        case 'qtd_pessoas':
+            return ordenarPropriedadeCrescente(novaLista,'serving');
+        case 'preco':
+            return ordenarPropriedadeCrescente(novaLista,'price');
+        default:
+            return novaLista;
         }
     }
 
@@ -44,7 +44,7 @@ export default function Itens(props: Props) {
         const novaLista = cardapio.filter(item => testaBusca(item.title) &&
         testaFiltro(item.category.id));
         setLista(ordenar(novaLista));
-    },[busca, filtro, ordenador])
+    },[busca, filtro, ordenador]);
 
     return(
         <div className={styles.itens}>
@@ -55,5 +55,5 @@ export default function Itens(props: Props) {
                 />
             ))}
         </div>
-    )
+    );
 }
